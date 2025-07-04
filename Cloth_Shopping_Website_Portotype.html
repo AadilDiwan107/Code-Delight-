@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Haven - Complete Clothing Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #4ecdc4;
+            --dark: #292b2c;
+            --light: #f7f7f7;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a; /* Dark navy blue */
+            color: #f8fafc;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c4e213e2-62f0-46d0-a25e-ca0ab2b6231c.png') no-repeat center center;
+            background-size: cover;
+            height: 70vh;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        .category-card {
+            transition: transform 0.3s;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .category-img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .product-card {
+            border: none;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+        }
+        
+        .product-card:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+        
+        .product-img {
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .badge-custom {
+            background-color: var(--primary);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+        }
+        
+        .social-icon {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            color: white;
+        }
+        
+        .newsletter-input {
+            border-radius: 0;
+            border: none;
+            border-bottom: 2px solid var(--primary);
+            background: transparent;
+            color: white;
+        }
+        
+        .btn-newsletter {
+            border-radius: 0;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+        }
+        
+        .feature-box {
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            background-color: var(--light);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 50vh;
+                text-align: center;
+            }
+            
+            .product-img {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Fashion Haven</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Men's Clothing</a></li>
+                            <li><a class="dropdown-item" href="#">Women's Fashion</a></li>
+                            <li><a class="dropdown-item" href="#">Kids Collection</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">School Uniforms</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">New Arrivals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sale</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+                <div class="ms-3 d-flex">
+                    <a href="#" class="nav-link text-white mx-2"><i class="bi bi-search"></i></a>
+                    <a href="#" class="nav-link text-white mx-2"><i class="bi bi-person"></i></a>
+                    <a href="#" class="nav-link text-white mx-2"><i class="bi bi-cart"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="display-3 fw-bold">Summer Collection 2023</h1>
+            <p class="fs-4">Discover the latest trends in fashion for the whole family</p>
+            <a href="#" class="btn btn-primary btn-lg mt-3">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Shop by Category</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="category-card">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4052f59f-8c9a-4fb1-a192-c4f583f13138.png" class="card-img-top category-img" alt="Collection of men's t-shirts in various colors arranged neatly on shelves">
+                        <div class="card-body text-center">
+                            <h5>Men's Wear</h5>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Explore</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="category-card">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2543e5b2-21ae-4aa3-b024-02aa2d002454.png" class="card-img-top category-img" alt="Women's dresses and ethnic wear displayed on mannequins in a boutique">
+                        <div class="card-body text-center">
+                            <h5>Women's Wear</h5>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Explore</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="category-card">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/14f2ba9d-160f-483a-9bb7-9196208bcb89.png" class="card-img-top category-img" alt="Colorful kids clothing including t-shirts, shorts and dresses hanging on racks">
+                        <div class="card-body text-center">
+                            <h5>Kids Collection</h5>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Explore</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="category-card">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4b351c67-5d4a-4cb4-8256-cfe74e635ec1.png" class="card-img-top category-img" alt="School uniforms including shirts, skirts and trousers neatly stacked in a store">
+                        <div class="card-body text-center">
+                            <h5>School Uniforms</h5>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Explore</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Featured Products</h2>
+            <div class="row">
+                <!-- Product 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <span class="position-absolute top-0 end-0 badge badge-custom mt-2 me-2">New</span>
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/cde67698-c9cc-4dd0-bae4-b322be31d2fa.png" class="card-img-top product-img" alt="Premium quality men's slim fit t-shirt in navy blue with contrast stitching">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-title">Men's T-Shirt</h5>
+                                <h5 class="text-primary">₹499</h5>
+                            </div>
+                            <p class="card-text">Premium quality cotton t-shirt</p>
+                            <div class="d-grid">
+                                <button class="btn btn-primary">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <span class="position-absolute top-0 end-0 badge bg-success mt-2 me-2">-40%</span>
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/de3303df-8b6a-440e-98ba-1a2cde84cdf4.png" class="card-img-top product-img" alt="Women's elegant maxi dress in floral print with delicate embroidery details">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-title">Women's Maxi Dress</h5>
+                                <h5><span class="text-decoration-line-through text-muted me-2">₹1999</span><span class="text-primary">₹1199</span></h5>
+                            </div>
+                            <p class="card-text">Floral printed summer maxi dress</p>
+                            <div class="d-grid">
+                                <button class="btn btn-primary">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/412bbeb5-86e9-402d-9785-bf28c298d55c.png" class="card-img-top product-img" alt="Kids school uniform set including shirt, shorts and tie in navy blue color">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-title">School Uniform Set</h5>
+                                <h5 class="text-primary">₹899</h5>
+                            </div>
+                            <p class="card-text">Complete school uniform set for kids</p>
+                            <div class="d-grid">
+                                <button class="btn btn-primary">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8af1f7da-5a88-4d37-9ffb-08047a1d38cd.png" class="card-img-top product-img" alt="Comfortable women's nightwear set in pastel pink with lace trimming">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-title">Women's Nightwear</h5>
+                                <h5 class="text-primary">₹699</h5>
+                            </div>
+                            <p class="card-text">Soft and comfortable night suit</p>
+                            <div class="d-grid">
+                                <button class="btn btn-primary">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-outline-primary btn-lg">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Why Choose Fashion Haven</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <i class="bi bi-truck feature-icon"></i>
+                        <h4>Free Shipping</h4>
+                        <p>Free delivery on all orders above ₹999</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <i class="bi bi-arrow-repeat feature-icon"></i>
+                        <h4>Easy Returns</h4>
+                        <p>30-day return policy on all products</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <i class="bi bi-shield-check feature-icon"></i>
+                        <h4>Quality Products</h4>
+                        <p>Certified high quality fabrics and stitching</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">New Arrivals</h2>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <span class="position-absolute top-0 end-0 badge badge-custom mt-2 me-2">New</span>
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f9f4144c-9d5a-4f10-8802-c4d41982966c.png" class="card-img-top product-img" alt="Men's designer jeans with trendy wash effect and stylish stitching">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-title">Men's Jeans</h5>
+                                <h5 class="text-primary">₹1299</h5>
+                            </div>
+                            <p class="card-text">Stylish slim fit jeans</p>
+                            <div class="d-grid">
+                                <button class="btn btn-primary">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <span class="position-absolute top-0 end-0 badge badge-custom mt-2 me-2">New</span>
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c5acc73e-34c1-4b70-9771-5ffcf202a065.png" class="card-img-top product-img" alt="Women's traditional ethnic wear set with intricate embroidery and mirror work">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-title">Women's Ethnic Set</h5>
+                                <h5 class="text-primary">₹1799</h5>
+                            </div>
+                            <p class="card-text">Traditional handcrafted set</p>
+                            <div class="d-grid">
+                                <button class="btn btn-primary">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <span class="position-absolute top-0 end-0 badge badge-custom mt-2 me-2">New</span>
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2c4c99a9-1bbd-4d6a-9c5e-295f21a4cd36.png" class="card-img-top product-img" alt="Colorful kids party wear outfit with bow tie and suspender details">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-title">Kids Party Wear</h5>
+                                <h5 class="text-primary">₹799</h5>
+                            </div>
+                            <p class="card-text">Stylish party outfit for kids</p>
+                            <div class="d-grid">
+                                <button class="btn btn-primary">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card product-card">
+                        <span class="position-absolute top-0 end-0 badge badge-custom mt-2 me-2">New</span>
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/47385ced-063b-4c29-9204-f766dbda1665.png" class="card-img-top product-img" alt="Women's casual top with trendy patterns and comfortable cotton fabric">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-title">Women's Casual Top</h5>
+                                <h5 class="text-primary">₹599</h5>
+                            </div>
+                            <p class="card-text">Comfortable and stylish</p>
+                            <div class="d-grid">
+                                <button class="btn btn-primary">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 class="fw-bold">Subscribe to our Newsletter</h3>
+                    <p>Get updates on new arrivals, special offers and sales</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control newsletter-input" placeholder="Your email address">
+                        <button class="btn btn-newsletter" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Fashion Haven</h5>
+                    <p>Your one-stop destination for quality clothing for the whole family.</p>
+                    <div class="mt-3">
+                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Shop</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Customer Service</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">FAQ</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Shipping Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Return Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> 123 Fashion Street, Mumbai</li>
+                        <li class="mb-2"><i class="bi bi-telephone me-2"></i> +91 9876543210</li>
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i> info@fashionhaven.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="text-center pt-3">
+                <p>&copy; 2023 Fashion Haven. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple cart counter
+        document.addEventListener('DOMContentLoaded', function() {
+            const addToCartButtons = document.querySelectorAll('.btn-primary');
+            
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    alert('Product added to cart!');
+                });
+            });
+            
+            // Newsletter subscription
+            const newsletterForm = document.querySelector('.btn-newsletter');
+            const emailInput = document.querySelector('.newsletter-input');
+            
+            newsletterForm.addEventListener('click', function() {
+                if(emailInput.value) {
+                    alert('Thank you for subscribing to our newsletter!');
+                    emailInput.value = '';
+                } else {
+                    alert('Please enter your email address');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
